@@ -3,13 +3,9 @@ from random import randint
 #파일 열기
 in_file = open('vocabulary.txt', 'r' , encoding='UTF-8')
 
-word = ''
-english_word = ''
-korean_word = ''
-
+#배열에 단어 저장
 voca = {}
 
-#단어 입력
 for word in in_file:
     wordbook = word.strip().split(': ')
 
@@ -18,25 +14,25 @@ for word in in_file:
 
     voca[korean_word] = english_word
 
-    '''
+#list 변환
+keys = list(voca.keys())
+
+#단어 맞추기
+while True:
+    #랜덤 구현
+    index = randint(0, len(keys) - 1)
+    korean_word = keys[index]
+    english_word = voca[korean_word]
+
     guess = input('%s: ' % korean_word)
+
+    if guess == 'q':
+        break
 
     if guess == voca[korean_word]:
         print('맞았습니다! \n')
     else:
-        print('아쉽습니다. 정답은 %s입니다. \n' % voca[english_word])
-    '''
-
-keys = list(voca.keys())
-print(keys)
-'''
-while True:
-    index = randint(0, len(keys) - 1)
-    korean_word = keys[index]
-    print(korean_word)
-    english_word = voca[korean_word]
-'''
-
+        print('틀렸습니다. 정답은 %s입니다. \n' % english_word)
 
 #파일 닫기
 in_file.close()
