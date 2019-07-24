@@ -264,4 +264,4 @@ for i in range(NUM_TRIES):
     total_prize += prize
     total_cost += 1000
 
-main(WINNING_NUMBERS, sorted(tries, key=lambda x: -x[1]), total_prize,    total_cost)
+main(WINNING_NUMBERS, sorted(tries, key=lambda x: -x[1]), total_prize, total_cost)

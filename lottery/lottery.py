@@ -31,6 +31,7 @@ def draw_winning_numbers():
     return selected_lotto_bonus
 '''
 print(draw_winning_numbers())
+
 list1 = [4, 19, 23, 28, 31, 39]
 list2 = [4, 19, 23, 28, 31, 39]
 
@@ -48,10 +49,29 @@ def count_matching_numbers(list1, list2):
         list_number = list_number + 1
 
     return matching_numbers
+'''
+numbers = [1, 2, 4, 20, 33, 39]
+winning_numbers = [1, 2, 4, 20, 33, 39, 10]
+'''
 
 # 로또 등수 확인하기
-numbers = [4, 19, 23, 28, 31, 39]
-winning_numbers = [1, 2, 4, 20, 33, 39, 10]
-
 def check(numbers, winning_numbers):
-   
+    match_count = 0
+    match_bonus_count = 0
+    winning_amount = 0
+
+    match_count = count_matching_numbers(numbers, winning_numbers[0:6])
+    match_bonus_count = count_matching_numbers(winning_numbers[6:7], numbers)
+
+    if match_count == 6:
+        winning_amount = 1000000000
+    elif match_count == 5 and match_bonus_count == 1:
+        winning_amount = 50000000
+    elif match_count == 5:
+        winning_amount = 1000000
+    elif match_count == 4:
+        winning_amount = 50000
+    elif match_count == 3:
+        winning_amount = 5000
+
+    return winning_amount
